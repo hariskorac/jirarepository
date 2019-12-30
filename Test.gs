@@ -6,7 +6,7 @@
     var priority = e.values[3];
     var assignee = e.values[4];
     var dueDate = e.values[5];
-    var url = "https://localhost:8080.atlassian.net/rest/api/latest/issue";
+    var url = "https://localhost:8080/rest/api/latest/issue";
     
     var data = 
         {
