@@ -6,6 +6,7 @@
     var priority = e.values[3];
     var assignee = e.values[4];
     var dueDate = e.values[5];
+    var url = "https://localhost:8080.atlassian.net/rest/api/latest/issue";
     
     var data = 
         {
@@ -21,4 +22,26 @@
         }
   };
   
+  var load = JSON.stringify(data);
+  
+  var header = 
+      { 
+        "content-type": "application/json",
+        "Accept": "application/json",
+        "authorization": "Basic <testuser:Test123>"
+      };
+  
+  var options = 
+      { 
+        "content-type": "application/json",
+        "method": "POST",
+        "headers": header,
+        "payload": load
+      };
+  var response = UrlFetchApp.fetch(url, options);
+  Logger.log(response.getContentText());
+
+  var dataAll = JSON.parse(response.getContentText());
+  var issueKey = dataAll.key
+  Logger.log(dataAll)
 }
